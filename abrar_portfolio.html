@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abrar Ahmed – Cybersecurity Portfolio</title>
+<!-- استيراد خطوط احترافية ومرتبة -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* إعدادات عامة */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #fcfdfe; /* خلفية فاتحة جداً مريحة للعين */
+    --surface: #ffffff;
+    --border: #eef2f6;
+    --accent: #0284c7; /* أزرق تقني احترافي */
+    --accent-soft: rgba(2, 132, 199, 0.08);
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --tag-bg: #f1f5f9;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  /* الملاحة */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 5%;
+  }
+  .nav-logo {
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -1px;
+    color: var(--text-main);
+  }
+  .nav-links { display: flex; gap: 30px; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* الأقسام */
+  section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
+
+  /* قسم الهيرو (Hero) */
+  .hero { 
+    padding: 140px 5% 100px; 
+    max-width: 1200px; 
+    margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  h1 {
+    font-size: clamp(38px, 7vw, 68px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    margin-bottom: 20px;
+    color: var(--text-main);
+  }
+  h1 span { 
+    background: linear-gradient(90deg, var(--accent), #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 650px;
+    margin-bottom: 40px;
+  }
+  .hero-actions { display: flex; gap: 15px; }
+  .btn-primary {
+    background: var(--text-main);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+  .btn-outline {
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text-main);
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--tag-bg); }
+
+  /* العناوين الفرعية */
+  .sec-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 500;
+  }
+  h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+  }
+
+  /* قسم حول المتخصص */
+  .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; }
+  .about-text { font-size: 16px; color: var(--text-muted); }
+  .about-text p { margin-bottom: 20px; }
+  
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: var(--accent); }
+  .stat-num {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+
+  /* قسم المهارات */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+  .skill-group {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .skill-group-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-group-title::before {
+    content: ''; width: 3px; height: 14px; background: var(--accent); border-radius: 10px;
+  }
+  .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    background: var(--tag-bg);
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+
+  /* قسم المشاريع */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .project-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+    border-color: var(--accent);
+  }
+  .project-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+  .project-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .project-tag {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 8px;
+  }
+
+  /* قسم الخبرة والتعليم */
+  .exp-list { display: flex; flex-direction: column; gap: 40px; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 20px;
+  }
+  .exp-date { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text-muted); padding-top: 4px; }
+  .exp-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .exp-org { color: var(--accent); font-weight: 600; font-size: 14px; margin-bottom: 10px; }
+  .exp-desc { color: var(--text-muted); font-size: 14px; max-width: 700px; }
+
+  /* قسم الشهادات */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .cert-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .cert-icon { color: var(--accent); font-size: 18px; margin-top: 2px; }
+  .cert-text { font-size: 13px; font-weight: 500; color: var(--text-main); line-height: 1.4; }
+
+  /* قسم التواصل */
+  .contact-box {
+    background: var(--text-main);
+    color: #fff;
+    border-radius: 30px;
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .contact-box h2 { color: #fff; margin-bottom: 16px; }
+  .contact-box p { color: #94a3b8; font-size: 18px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .contact-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+  .contact-link {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { background: var(--accent); transform: scale(1.05); }
+
+  footer {
+    padding: 40px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    background: #fff;
+  }
+
+  /* التوافق مع الجوال */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    section, .hero { padding: 80px 20px; }
+    .about-grid, .projects-grid, .exp-item { grid-template-columns: 1fr; gap: 30px; }
+    h1 { font-size: 42px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Abrar's Portfolio.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Open to Opportunities</div>
+  <h1>Abrar <span>Ahmed </span>AL-Digahishi</h1>
+  <p class="hero-sub">BSc Computer Science graduate from Sultan Qaboos University. Specialized in Cybersecurity and Computing Infrastructure with a focus on proactive threat detection.</p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn-primary">View Projects</a>
+    <a href="#contact" class="btn-outline">Get in Touch</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="sec-label">01 // PROFILE</span>
+  <h2>Professional Summary</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am a Computer Science professional with expertise in Cybersecurity, computer networks, and distributed systems.</p>
+      <p>Experienced in penetration testing, digital forensics, and data analysis. I leverage tools like Wireshark, Nmap, Metasploit, and Volatility to protect systems through proactive security solutions.</p>
+      <p>Passionate about combining Machine Learning techniques with cybersecurity to enhance mobile security and threat detection.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-num">3.17</span>
+        <span class="stat-label">Cumulative GPA</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">2x</span>
+        <span class="stat-label">Dean's List</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Certifications</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">11+</span>
+        <span class="stat-label">Projects Done</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <span class="sec-label">02 // EXPERTISE</span>
+  <h2>Technical Toolkit</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Programming</div>
+      <div class="skill-list">
+        <span class="skill-tag">Python</span><span class="skill-tag">Java</span><span class="skill-tag">C++</span><span class="skill-tag">Assembly</span><span class="skill-tag">R</span><span class="skill-tag">JavaScript</span><span class="skill-tag">PHP</span><span class="skill-tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Cybersecurity Tools</div>
+      <div class="skill-list">
+        <span class="skill-tag">Nmap</span><span class="skill-tag">Metasploit</span><span class="skill-tag">Wireshark</span><span class="skill-tag">FTK Imager</span><span class="skill-tag">Volatility</span><span class="skill-tag">Autopsy</span><span class="skill-tag">Maltego</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">ML & Data</div>
+      <div class="skill-list">
+        <span class="skill-tag">Machine Learning</span><span class="skill-tag">Deep Learning</span><span class="skill-tag">Text Preprocessing</span><span class="skill-tag">Feature Engineering</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Networking & OS</div>
+      <div class="skill-list">
+        <span class="skill-tag">Cisco Packet Tracer</span><span class="skill-tag">Linux (Kali, Ubuntu)</span><span class="skill-tag">Windows</span><span class="skill-tag">VirtualBox</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <span class="sec-label">03 // PORTFOLIO</span>
+  <h2>Academic & Professional Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-title">Smishing Detection System (FYP)</div>
+      <p class="project-desc">Developed an end-to-end ML/DL system to classify SMS smishing attacks using DistilBERT and LSTM. Integrated LIME for Explainable AI and VirusTotal API for URL analysis.</p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span><span class="project-tag">Flask</span><span class="project-tag">DistilBERT</span><span class="project-tag">XGBoost</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-title">Windows Memory Forensics</div>
+      <p class="project-desc">Live memory acquisition and analysis using FTK Imager and Volatility to extract running processes and artifacts</p>
+      <div class="project-tags">
+        <span class="project-tag">Volatility</span><span class="project-tag">FTK Imager</span><span class="project-tag">Digital Forensics</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-title">Secure File Archiving System</div>
+      <p class="project-desc">Built a multi-layer encryption system using AES-256, RSA, and SHA-256 to ensure data confidentiality and integrity</p>
+      <div class="project-tags">
+        <span class="project-tag">Cryptography</span><span class="project-tag">AES-256</span><span class="project-tag">Python</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-title">Network Traffic Analysis</div>
+      <p class="project-desc">In-depth packet analysis and reconnaissance simulation using Wireshark, Zenmap, and Kali Linux environment</p>
+      <div class="project-tags">
+        <span class="project-tag">Wireshark</span><span class="project-tag">Zenmap</span><span class="project-tag">Nmap</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="sec-label">04 // HISTORY</span>
+  <h2>Experience & Education</h2>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-date">Jul – Sep 2025</div>
+      <div class="exp-body">
+        <div class="exp-title">IT Department Trainee</div>
+        <div class="exp-org">Oman Tourism College[cite: 1]</div>
+        <p class="exp-desc">I provided comprehensive technical support by troubleshooting hardware, software, and network connectivity issues across computer laboratories and staff offices to ensure minimal downtime. I gained extensive experience in system administration, including managing asset inventories, configuring desktop environments, and executing department-wide upgrades to Windows 11 with a focus on security via TPM 2.0 and BitLocker. My role also involved managing Microsoft 365 applications and maintaining peripherals like printers and interactive tools to support a high-functioning digital learning environment. Through these tasks, I developed a strong ability to deploy modern technical solutions and provide efficient, user-focused support for both students and staff.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Sep – Dec 2023</div>
+      <div class="exp-body">
+        <div class="exp-title">Teaching Assistant – Web Computing</div>
+        <div class="exp-org">Sultan Qaboos University</div>
+        <p class="exp-desc">Assisted in delivering course content covering HTML, CSS, JavaScript, and PHP</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">2019 – 2026</div>
+      <div class="exp-body">
+        <div class="exp-title">BSc in Computer Science</div>
+        <div class="exp-org">Sultan Qaboos University</div>
+        <p class="exp-desc">Specialization: Cybersecurity and Computing Infrastructure. GPA: 3.17</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <span class="sec-label">05 // ACHIEVEMENTS</span>
+  <h2>Certifications & Awards</h2>
+  <div class="certs-grid">
+    <div class="cert-card"><span class="cert-icon">🏆</span><span class="cert-text">Distinction on the Dean's List (Fall 2024)</span></div>
+    <div class="cert-card"><span class="cert-icon">🥈</span><span class="cert-text">Honors on the Dean's List (Spring 2025)</span></div>
+    <div class="cert-card"><span class="cert-icon">🎖️</span><span class="cert-text">Scientific Excellence Award (Dec 2025)</span></div>
+    <div class="cert-card"><span class="cert-icon">🚀</span><span class="cert-text">Startup Weekend (Top 11 Ideas), SQU 2025</span></div>
+    <div class="cert-card"><span class="cert-icon">💻</span><span class="cert-text">LPI Linux Essentials Workshop (Oct 2025)</span></div>
+    <div class="cert-card"><span class="cert-icon">🤖</span><span class="cert-text">Majlis AI Hackathon (Aug 2022)</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box">
+    <h2>Connect with Me</h2>
+    <p>I am actively looking for opportunities to contribute my skills in Computer science and Cybersecurity.</p>
+    <div class="contact-links">
+      <a href="mailto:abrar123di@gmail.com" class="contact-link">abrar123di@gmail.com</a>
+      <a href="tel:+96894443185" class="contact-link">+968 944 43185</a>
+      
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Abrar Ahmed Saud AL-Digahishi &nbsp;·&nbsp; Muscat, Oman
+</footer>
+
+</body>
+</html>
